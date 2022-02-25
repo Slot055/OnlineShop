@@ -1,7 +1,7 @@
 package ru.MyOnlineShop.model.client;
 
 public class Client {
-
+    private int idClient;
     private String name;
     private String lastName;
     private String gender;
@@ -11,7 +11,8 @@ public class Client {
     private ClientAccount clientAccount;
 
 
-    public Client(String name, String lastName, String gender, int age, String phoneNumber, String email) {
+    public Client(int idClient, String name, String lastName, String gender, int age, String phoneNumber, String email) {
+        this.idClient = idClient;
         this.name = name;
         this.lastName = lastName;
         this.gender = gender;
@@ -27,9 +28,17 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Имя: " + name + "\n" + "Фамилия: " + lastName + "\n" + "Пол: " + gender + "\n" + "Возраст: " + age +
-                "\n" + "Номер телефона: " + phoneNumber + "\n" + "Email: " + email;
+        return "Номер аккаунта:" + idClient + " , " + "Имя:" + name + " , " + "Фамилия:" + lastName + " , " + "Пол:" + gender + " , " + "Возраст:" + age +
+                " , " + "Номер_телефона:" + phoneNumber + " , " + "Email:" + email;
 
+    }
+
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
     }
 
     public String getName() {

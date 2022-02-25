@@ -6,11 +6,8 @@ import java.util.Collection;
 import java.util.Set;
 
 public class Cheese extends DairyProduct {
-    private double expirationDate;
-
-    public Cheese(String name, double price, int item, double expirationDate) {
-        super(name, price, item);
-        this.expirationDate = expirationDate;
+    public Cheese(String categoryProduct, String typeProduct, String nameProduct, double price, int item, double expirationDate) {
+        super(categoryProduct, typeProduct, nameProduct, price, item, expirationDate);
     }
 
     public Cheese() {
@@ -45,14 +42,6 @@ public class Cheese extends DairyProduct {
     @Override
     public void pay() {
         super.pay();
-    }
-
-    public double getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(double expirationDate) {
-        this.expirationDate = expirationDate;
     }
 
 }

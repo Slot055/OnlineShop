@@ -4,7 +4,7 @@ import ru.MyOnlineShop.model.product.Product;
 
 public abstract class HomeTechnics extends Product {
 
-    public HomeTechnics(String name, double price, int item) {
-        super(name, price, item);
+    public HomeTechnics(String categoryProduct, String typeProduct, String nameProduct, double price, int item) {
+        super(categoryProduct, typeProduct, nameProduct, price, item);
     }
 }

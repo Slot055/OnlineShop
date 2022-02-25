@@ -25,13 +25,13 @@ public class OnlineShop {
         if (date.getHours() < 8) {
             System.out.println("Магазин закрыт" + "\n" + "\n" + "Магазин откроется через " + (7 - date.getHours()) +
                     " час(ов) : " + (60 - date.getMinutes()) + " минут(ы)");
-            System.exit(0);
+           // System.exit(0);
         } else if (date.getHours() < 23) {
             storeOpen();
         } else {
             System.out.println("Магазин закрыт" + "\n" + "Магазин откроется через " + (31 - date.getHours()) +
                     " час(ов) : " + (60 - date.getMinutes()) + " минут(ы)");
-            System.exit(0);
+           // System.exit(0);
         }
     }
 

@@ -14,7 +14,7 @@ public class ClientAccount {
 
     @Override
     public String toString() {
-        return "Номер аккаунта: " + idClient + "\n" + "Клиент: " + "\n" + client;
+        return "Номер аккаунта:" + idClient + " , " + client;
     }
 
     public ClientAccount() {
@@ -22,7 +22,7 @@ public class ClientAccount {
     }
 
     public void registrationAccount(ClientAccount clientAccount) {
-        CreateToObject.createClientDataBase(clientAccount);
+        CreateToObject.createClientDataBase();
     }
 
 

@@ -46,9 +46,10 @@ public class CreateToObject {
         return clientAccount;
     }
 
-    public static ClientAccountDataBase createClientDataBase(ClientAccount clientAccount) {
+    public static ClientAccountDataBase createClientDataBase() {
         ClientAccountDataBase clientAccountDataBase = new ClientAccountDataBase();
-        clientAccountDataBase.addInBase(clientAccount);
+        clientAccountDataBase.dataBaseWrite(createScanner());
+
         return clientAccountDataBase;
     }
 

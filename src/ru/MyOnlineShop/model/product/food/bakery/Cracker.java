@@ -6,8 +6,8 @@ import java.util.Collection;
 import java.util.Set;
 
 public class Cracker extends Bakery {
-    public Cracker(String name, double price, int item) {
-        super(name, price, item);
+    public Cracker(String categoryProduct, String typeProduct, String nameProduct, double price, int item, double expirationDate) {
+        super(categoryProduct, typeProduct, nameProduct, price, item, expirationDate);
     }
 
     @Override
