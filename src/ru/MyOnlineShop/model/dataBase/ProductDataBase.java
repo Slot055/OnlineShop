@@ -1,5 +1,6 @@
 package ru.MyOnlineShop.model.dataBase;
 
+import ru.MyOnlineShop.model.exeption.InvalidCategoryProduct;
 import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.product.food.Food;
 import ru.MyOnlineShop.model.product.food.bakery.Bakery;
@@ -35,11 +36,11 @@ public class ProductDataBase extends DataBase {
     }
 
     @Override
-    public ArrayList<Product> findProduct(String typeProduct) throws Exception {
+    public ArrayList<Product> findProduct(String typeProduct) throws InvalidCategoryProduct {
         if (productBasePrice.containsKey(typeProduct)) {
             return productBasePrice.get(typeProduct);
         } else {
-            throw new Exception("Такой категории товаров пока нет в прайс-листе");
+            throw new InvalidCategoryProduct("Категории товаров пока нет в прайс-листе",typeProduct);
         }
 
     }

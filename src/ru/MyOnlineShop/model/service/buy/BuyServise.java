@@ -1,6 +1,7 @@
 package ru.MyOnlineShop.model.service.buy;
 
 import ru.MyOnlineShop.model.dataBase.ProductDataBase;
+import ru.MyOnlineShop.model.exeption.InvalidCategoryProduct;
 import ru.MyOnlineShop.model.product.Product;
 
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ public abstract class BuyServise implements Buy {
                 if (list.getPrice() >= minPrice && list.getPrice() <= maxPrice) {
                     System.out.println(list);
                 }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (InvalidCategoryProduct e) {
+            System.out.println(e.getTypeProduct() + " - " + e.getMessage());
             System.out.println("Осталось попыток ввода: " + attempts);
 
             if (attempts != 0) {
