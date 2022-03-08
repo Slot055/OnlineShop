@@ -1,6 +1,8 @@
 package ru.MyOnlineShop.model.product.food.dairyProduct;
-
+import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.product.food.Food;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class DairyProduct extends Food {
     public DairyProduct(String categoryProduct, String typeProduct, String nameProduct, double price, int item, double expirationDate) {
@@ -9,5 +11,7 @@ public abstract class DairyProduct extends Food {
 
     public DairyProduct() {
     }
+
+    public static List<Product> dairyProductList = new ArrayList<>();
 
 }

@@ -1,13 +1,8 @@
 package ru.MyOnlineShop;
-
 import ru.MyOnlineShop.model.CreateToObject;
-import ru.MyOnlineShop.model.dataBase.ClientAccountDataBase;
-import ru.MyOnlineShop.model.product.Product;
-import ru.MyOnlineShop.model.client.Client;
-import ru.MyOnlineShop.model.client.ClientAccount;
+import ru.MyOnlineShop.model.dataBase.ClientDataBase;
 import ru.MyOnlineShop.model.dataBase.ProductDataBase;
-
-
+import ru.MyOnlineShop.model.service.buy.BuyServise;
 import java.util.Scanner;
 
 
@@ -17,25 +12,18 @@ public class MyOnlineShop {
         //Регистрация клиента
         CreateToObject.createOnlineShop();
         Scanner scanner = CreateToObject.createScanner();
-        ClientAccountDataBase clientAccountDataBase = CreateToObject.createClientDataBase();
+        ClientDataBase clientDataBase = CreateToObject.createClientDataBase();
+        clientDataBase.dataBaseRead();
+        clientDataBase.exportFromDataBase();
 
-        //ClientAccount clientAccount = CreateToObject.createClientAccount(client);
-        // clientAccount.registrationAccount(clientAccount);
-        System.out.println(ClientAccountDataBase.getClientBase().toString());
-        //ClientAccountDataBase clientAccountDataBase = CreateToObject.createClientDataBase(clientAccount);
 
-        clientAccountDataBase.dataBaseRead();
-
-        //Поиск продуктов в коллекции
+        //Импорт-Экспорт базы данных по категориям и поиск продуктов в коллекции по категории продуктов
         ProductDataBase productDataBase = CreateToObject.createProductDataBase();
-        productDataBase.setFoodBase(productDataBase);
-        System.out.println("***********************************" + "\n" + "Список продуктов: " + "\n" + productDataBase.productBase.keySet());
-        System.out.println("***********************************" + "\n" + "Для информации о продукте введите его наименование: ");
-        String name = scanner.next();
-        Product product = productDataBase.findProduct(name);
-        System.out.println(product);
+        productDataBase.dataBaseRead();
+        productDataBase.exportFromDataBase();
+        productDataBase.importToDataBase();
+        BuyServise.productCategorySearch(scanner, productDataBase);
+    }
 
 
     }
-
-}

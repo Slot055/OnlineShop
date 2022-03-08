@@ -1,11 +1,8 @@
 package ru.MyOnlineShop.model.product;
-
 import ru.MyOnlineShop.model.service.buy.Buy;
+import java.util.Objects;
 
-import java.util.Collection;
-import java.util.Set;
-
-public class Product implements Buy {
+public class Product implements Buy, Comparable<Product> {
     private String categoryProduct;
     private String typeProduct;
     private String nameProduct;
@@ -25,8 +22,22 @@ public class Product implements Buy {
 
     @Override
     public String toString() {
-        return "Категория товара:" + categoryProduct + " , " + "Тип товара" + typeProduct + " , " + "Товар:" + nameProduct +
-                " , " + "Артикул:" + item + " , " + "Цена: " + price;
+        return "Категория товара:" + categoryProduct + " , " + "Тип товара:" + typeProduct + " , " + "Наименование товара:" + nameProduct +
+                " , " + "Цена:" + price + " , " + "Артикул:" + item;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return Double.compare(product.getPrice(), getPrice()) == 0 && Objects.equals(getCategoryProduct(), product.getCategoryProduct()) &&
+                Objects.equals(getTypeProduct(), product.getTypeProduct()) && Objects.equals(getNameProduct(), product.getNameProduct());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCategoryProduct(), getTypeProduct(), getNameProduct(), getPrice());
     }
 
     public void productInfo() {
@@ -73,10 +84,6 @@ public class Product implements Buy {
         this.item = item;
     }
 
-    @Override
-    public Collection<Product> findAllProducts() {
-        return null;
-    }
 
     @Override
     public Product findProduct(String name) {
@@ -84,12 +91,12 @@ public class Product implements Buy {
     }
 
     @Override
-    public Set<Product> findProducts(int price) {
-        return null;
+    public void putInBasket() {
+
     }
 
     @Override
-    public void putInBasket() {
-
+    public int compareTo(Product product) {
+        return (int) (this.getPrice() - product.getPrice());
     }
 }

@@ -18,19 +18,8 @@ public class Cheese extends DairyProduct {
 
     }
 
-
-    @Override
-    public Collection<Product> findAllProducts() {
-        return null;
-    }
-
     @Override
     public Product findProduct(String name) {
-        return null;
-    }
-
-    @Override
-    public Set<Product> findProducts(int price) {
         return null;
     }
 

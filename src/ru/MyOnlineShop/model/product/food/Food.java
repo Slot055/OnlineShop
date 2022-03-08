@@ -3,6 +3,9 @@ package ru.MyOnlineShop.model.product.food;
 import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.service.buy.Buy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Food extends Product implements Buy {
     private double expirationDate;
 
@@ -13,6 +16,8 @@ public abstract class Food extends Product implements Buy {
 
     public Food() {
     }
+
+    public static List<Product> food = new ArrayList<>();
 
     public double getExpirationDate() {
         return expirationDate;

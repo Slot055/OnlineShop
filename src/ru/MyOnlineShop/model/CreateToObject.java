@@ -1,8 +1,7 @@
 package ru.MyOnlineShop.model;
 
 import ru.MyOnlineShop.model.client.Client;
-import ru.MyOnlineShop.model.client.ClientAccount;
-import ru.MyOnlineShop.model.dataBase.ClientAccountDataBase;
+import ru.MyOnlineShop.model.dataBase.ClientDataBase;
 import ru.MyOnlineShop.model.dataBase.ProductDataBase;
 import ru.MyOnlineShop.model.service.Basket;
 
@@ -36,21 +35,16 @@ public class CreateToObject {
         client.setPhoneNumber(scanner.next());
         System.out.println("Email:");
         client.setEmail(scanner.next());
+        client.setIdClient(client.hashCode());
 
         return client;
     }
 
-    public static ClientAccount createClientAccount(Client client) {
-        ClientAccount clientAccount = new ClientAccount(client.hashCode(), client);
+    public static ClientDataBase createClientDataBase() {
+        ClientDataBase clientDataBase = new ClientDataBase();
+        clientDataBase.dataBaseWrite(createScanner());
 
-        return clientAccount;
-    }
-
-    public static ClientAccountDataBase createClientDataBase() {
-        ClientAccountDataBase clientAccountDataBase = new ClientAccountDataBase();
-        clientAccountDataBase.dataBaseWrite(createScanner());
-
-        return clientAccountDataBase;
+        return clientDataBase;
     }
 
     public static ProductDataBase createProductDataBase() {

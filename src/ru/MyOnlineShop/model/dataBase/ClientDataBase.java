@@ -3,7 +3,6 @@ package ru.MyOnlineShop.model.dataBase;
 import ru.MyOnlineShop.model.CreateToObject;
 import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.client.Client;
-import ru.MyOnlineShop.model.client.ClientAccount;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,16 +11,10 @@ import java.io.IOException;
 import java.util.*;
 
 
-public class ClientAccountDataBase extends DataBase {
+public class ClientDataBase extends DataBase {
     private Client client;
-    private ClientAccount clientAccount;
-    private static List<ClientAccount> clientBase = new ArrayList<>();
+    private static List<Client> clientBase = new ArrayList<>();
 
-
-    public void addInBase(ClientAccount clientAccount) {
-        clientBase.add(clientAccount);
-
-    }
 
     public Client getClient() {
         return client;
@@ -31,25 +24,12 @@ public class ClientAccountDataBase extends DataBase {
         this.client = client;
     }
 
-    public static List<ClientAccount> getClientBase() {
+    public static List<Client> getClientBase() {
         return clientBase;
     }
 
-    public ClientAccount getClientAccount() {
-        return clientAccount;
-    }
-
-    public void setClientAccount(ClientAccount clientAccount) {
-        this.clientAccount = clientAccount;
-    }
-
-    public static void setClientBase(List<ClientAccount> clientBase) {
-        ClientAccountDataBase.clientBase = clientBase;
-    }
-
-    @Override
-    public Collection<Product> findAllProducts() {
-        return null;
+    public static void setClientBase(List<Client> clientBase) {
+        ClientDataBase.clientBase = clientBase;
     }
 
     @Override
@@ -58,23 +38,16 @@ public class ClientAccountDataBase extends DataBase {
     }
 
     @Override
-    public Set<Product> findProducts(int price) {
-        return null;
-    }
-
-
-    @Override
     public void putInBasket() {
 
     }
 
     @Override
     public void dataBaseWrite(Scanner scanner) {
-        try (FileWriter fw = new FileWriter("dataBase/dataBaseCatalog/ClientAccountDataBase.txt", true)) {
+        try (FileWriter fw = new FileWriter("dataBase/dataBaseCatalog/ClientBaseInput.txt", true)) {
             Client client = CreateToObject.createClient(scanner);
-            ClientAccount clientAccount = CreateToObject.createClientAccount(client);
 
-            fw.write(String.valueOf(clientAccount));
+            fw.write(String.valueOf(client));
             fw.write("\n");
             fw.flush();
         } catch (IOException e) {
@@ -85,16 +58,16 @@ public class ClientAccountDataBase extends DataBase {
 
     @Override
     public void dataBaseRead() {
-        try (BufferedReader br = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/ClientAccountDataBase.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/ClientBaseInput.txt"))) {
 
             String currentLine = "";
             while ((currentLine = br.readLine()) != null) {
-                System.out.println(currentLine);
+                //System.out.println(currentLine);
                 if (currentLine != null && !currentLine.isBlank())
                     clientBase.add(convertStringToBase(currentLine));
             }
 
-            System.out.println(clientBase);
+            // System.out.println(clientBase);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -102,15 +75,12 @@ public class ClientAccountDataBase extends DataBase {
     }
 
     @Override
-    public ClientAccount convertStringToBase(String currentLine) {
-
-
+    public Client convertStringToBase(String currentLine) {
         String[] splitted = currentLine.split(" , ");
         Client client = new Client();
-        ClientAccount clientAccount = new ClientAccount();
 
         for (String s : splitted) {
-            getIdClientAndSet(s,client);
+            getIdClientAndSet(s, client);
             getNameAndSet(s, client);
             getLastNameAndSet(s, client);
             getGenderAndSet(s, client);
@@ -120,10 +90,27 @@ public class ClientAccountDataBase extends DataBase {
 
         }
 
-        return clientAccount;
+        return client;
     }
+
+    @Override
+    public void exportFromDataBase() {
+        try (FileWriter fw = new FileWriter("dataBase/dataBaseCatalog/ClientBaseExport.txt")) {
+            for (Client client : clientBase)
+                fw.write(client + "\n");
+            fw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void importToDataBase() {
+
+    }
+
     private static void getIdClientAndSet(String s, Client client) {
-        if (s != null && s.contains("Номер аккаунта:")) {
+        if (s != null && s.contains("Номер клиента:")) {
             client.setIdClient(Integer.parseInt(s.split(":")[1]));
         }
     }

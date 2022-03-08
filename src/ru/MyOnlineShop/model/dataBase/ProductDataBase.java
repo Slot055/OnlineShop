@@ -1,10 +1,13 @@
 package ru.MyOnlineShop.model.dataBase;
 
 import ru.MyOnlineShop.model.product.Product;
-import ru.MyOnlineShop.model.product.food.bakery.Bread;
-import ru.MyOnlineShop.model.product.food.bakery.Cracker;
-import ru.MyOnlineShop.model.product.food.dairyProduct.Cheese;
-import ru.MyOnlineShop.model.product.food.dairyProduct.Milk;
+import ru.MyOnlineShop.model.product.food.Food;
+import ru.MyOnlineShop.model.product.food.bakery.Bakery;
+import ru.MyOnlineShop.model.product.food.dairyProduct.DairyProduct;
+import ru.MyOnlineShop.model.product.homeTechnics.BigHomeTechnics;
+import ru.MyOnlineShop.model.product.homeTechnics.HomeElectronics;
+import ru.MyOnlineShop.model.product.homeTechnics.NonFood;
+import ru.MyOnlineShop.model.product.homeTechnics.SmallHomeTechnics;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,21 +17,13 @@ import java.util.*;
 
 public class ProductDataBase extends DataBase {
     private Product product;
-    public Map<String, Product> productBase = new HashMap<>();
+    public ArrayList<Product> productBase = new ArrayList<>();
+    public Map<String, ArrayList<Product>> productBasePrice = new HashMap<>();
 
-    public Map<String, Product> addInBase(String name, Product product) {
-        product.setItem(hashCode());
-        productBase.put(name, product);
-        return productBase;
-    }
+    public Map<String, ArrayList<Product>> addInBase(String categoryProduct, ArrayList<Product> productBase) {
 
-    public void setFoodBase(ProductDataBase productDataBase) {
-        productDataBase.addInBase("Сыр-1", new Cheese("Продукты питания","Молочные продукты","Сыр Российский", 490.00, 0, 1));
-        productDataBase.addInBase("Хлеб", new Bread("Продукты питания","Выпечка","Хлеб", 38.00, 0,0.1));
-        productDataBase.addInBase("Печенье", new Cracker("Продукты питания","Выпечка","Печенье Овсяное", 65, 0,0.2));
-        productDataBase.addInBase("Молоко-1", new Milk("Продукты питания","Молочные продукты","Молоко Простоквашино", 64.00, 0, 1.0, 0.6));
-        productDataBase.addInBase("Сыр-2", new Cheese("Продукты питания","Молочные продукты","Сыр Пошехонский", 520.00, 0, 1));
-        productDataBase.addInBase("Молоко-2", new Milk("Продукты питания","Молоко","Молоко Домик в деревне", 78.00, 0, 1.0, 0.6));
+        productBasePrice.put(categoryProduct, productBase);
+        return productBasePrice;
     }
 
     public Product getProduct() {
@@ -40,25 +35,13 @@ public class ProductDataBase extends DataBase {
     }
 
     @Override
-    public Collection<Product> findAllProducts() {
-        return null;
-    }
-
-    @Override
-    public Product findProduct(String name) {
-        if (productBase.containsKey(name)) {
-
-            return productBase.get(name);
+    public ArrayList<Product> findProduct(String typeProduct) throws Exception {
+        if (productBasePrice.containsKey(typeProduct)) {
+            return productBasePrice.get(typeProduct);
         } else {
-            System.out.println("Такого продукта пока нет в прайс-листе");
-            return null;
+            throw new Exception("Такой категории товаров пока нет в прайс-листе");
         }
 
-    }
-
-    @Override
-    public Set<Product> findProducts(int price) {
-        return null;
     }
 
     @Override
@@ -82,16 +65,14 @@ public class ProductDataBase extends DataBase {
     public void dataBaseRead() {
         try (BufferedReader br = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/ProductDataBase.txt"))) {
 
-            List<Product> productBase = new ArrayList<>();
-
             String currentLine = "";
             while ((currentLine = br.readLine()) != null) {
                 System.out.println(currentLine);
-                if (currentLine != null && !currentLine.isBlank())
+                if (currentLine != null && !currentLine.isBlank()) {
                     productBase.add(convertStringToBase(currentLine));
+                }
             }
-
-            System.out.println(productBase);
+            // System.out.println(productBase);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -100,22 +81,156 @@ public class ProductDataBase extends DataBase {
 
     @Override
     public Product convertStringToBase(String currentLine) {
-
-
         String[] splitted = currentLine.split(" , ");
         Product product = new Product();
 
         for (String s : splitted) {
+            getСategoryAndSet(s, product);
+            getTypeAndSet(s, product);
             getNameAndSet(s, product);
             getPriceAndSet(s, product);
-            getItemAndSet(s, product);
+            getItemAndSet(product);
+
         }
 
         return product;
     }
 
+    @Override
+    public void exportFromDataBase() {
+        try (FileWriter dbExport = new FileWriter("dataBase/dataBaseCatalog/ProductDataBaseExport.txt");
+             FileWriter dbBakery = new FileWriter("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseBakery/dataBaseBakery.txt");
+             FileWriter dbDairyProduct = new FileWriter("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseDairyProduct/dataBaseDairyProduct.txt");
+             FileWriter dbBigHomeTechnics = new FileWriter("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseBigHomeTechnics.txt");
+             FileWriter dbSmallHomeTechnics = new FileWriter("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseSmallHomeTechnics.txt");
+             FileWriter dbHomeElectronics = new FileWriter("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseHomeElectronics.txt");
+             FileWriter dbNonFood = new FileWriter("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseNonFood.txt");
+             FileWriter dbFood = new FileWriter("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseFood.txt")) {
+            Collections.sort(productBase);
+            for (Product product : productBase) {
+                dbExport.write(product + "\n");
+                switch (product.getTypeProduct()) {
+                    case "Выпечка":
+                        dbBakery.write(product + "\n");
+                        break;
+                    case "Молочные продукты":
+                        dbDairyProduct.write(product + "\n");
+                        break;
+                    case "Крупная бытовая техника":
+                        dbBigHomeTechnics.write(product + "\n");
+                        break;
+                    case "Мелкая бытовая техника":
+                        dbSmallHomeTechnics.write(product + "\n");
+                        break;
+                    case "Бытовая электроника":
+                        dbHomeElectronics.write(product + "\n");
+                        break;
+                }
+               if (product.getCategoryProduct().equals("Бытовая техника"))
+                    dbNonFood.write(product + "\n");
+               if (product.getCategoryProduct().equals("Продукты питания"))
+                    dbFood.write(product + "\n");
+            }
+            dbExport.flush();
+            dbBakery.flush();
+            dbDairyProduct.flush();
+            dbBigHomeTechnics.flush();
+            dbSmallHomeTechnics.flush();
+            dbHomeElectronics.flush();
+            dbNonFood.flush();
+            dbFood.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void importToDataBase() {
+        try (BufferedReader dataBaseBakery = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseBakery/dataBaseBakery.txt"));
+             BufferedReader dataBaseDairyProduct = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseDairyProduct/dataBaseDairyProduct.txt"));
+             BufferedReader dataBaseBigHomeTechnics = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseBigHomeTechnics.txt"));
+             BufferedReader dataBaseSmallHomeTechnics = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseSmallHomeTechnics.txt"));
+             BufferedReader dataBaseHomeElectronics = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseHomeElectronics.txt"));
+             BufferedReader dataBaseNonFood = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseNonFood.txt"));
+             BufferedReader dataBaseFood = new BufferedReader(new FileReader("dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseFood.txt"))) {
+
+            String currentLineBakery = "";
+            String currentLineDairyProduct = "";
+            String currentLineBigHomeTechnics = "";
+            String currentLineSmallHomeTechnics = "";
+            String currentLineHomeElectronics = "";
+            String currentLineNonFood = "";
+            String currentLineFood = "";
+            while ((currentLineBakery = dataBaseBakery.readLine()) != null) {
+                if (currentLineBakery != null && !currentLineBakery.isBlank()) {
+                    Bakery.bakeryList.add(convertStringToBase(currentLineBakery));
+                    addInBase("Выпечка", (ArrayList<Product>) Bakery.bakeryList);
+                }
+            }
+            while ((currentLineDairyProduct = dataBaseDairyProduct.readLine()) != null) {
+                if (currentLineDairyProduct != null && !currentLineDairyProduct.isBlank()) {
+                    DairyProduct.dairyProductList.add(convertStringToBase(currentLineDairyProduct));
+                    addInBase("Молочные продукты", (ArrayList<Product>) DairyProduct.dairyProductList);
+                }
+            }
+            while ((currentLineBigHomeTechnics = dataBaseBigHomeTechnics.readLine()) != null) {
+                if (currentLineBigHomeTechnics != null && !currentLineBigHomeTechnics.isBlank()) {
+                    BigHomeTechnics.bigHomeTechnicsList.add(convertStringToBase(currentLineBigHomeTechnics));
+                    addInBase("Крупная бытовая техника", (ArrayList<Product>) BigHomeTechnics.bigHomeTechnicsList);
+                }
+            }
+            while ((currentLineSmallHomeTechnics = dataBaseSmallHomeTechnics.readLine()) != null) {
+                if (currentLineSmallHomeTechnics != null && !currentLineSmallHomeTechnics.isBlank()) {
+                    SmallHomeTechnics.smallHomeTechnicsList.add(convertStringToBase(currentLineSmallHomeTechnics));
+                    addInBase("Мелкая бытовая техника", (ArrayList<Product>) SmallHomeTechnics.smallHomeTechnicsList);
+                }
+
+            }
+            while ((currentLineHomeElectronics = dataBaseHomeElectronics.readLine()) != null) {
+                if (currentLineHomeElectronics != null && !currentLineHomeElectronics.isBlank()) {
+                    HomeElectronics.homeElectronicsList.add(convertStringToBase(currentLineHomeElectronics));
+                    addInBase("Бытовая электроника", (ArrayList<Product>) HomeElectronics.homeElectronicsList);
+                }
+
+
+            }
+            while ((currentLineNonFood = dataBaseNonFood.readLine()) != null) {
+                if (currentLineNonFood != null && !currentLineNonFood.isBlank()) {
+                    NonFood.nonFood.add(convertStringToBase(currentLineNonFood));
+                    addInBase("Бытовая техника", (ArrayList<Product>) NonFood.nonFood);
+                }
+
+
+            }
+            while ((currentLineFood = dataBaseFood.readLine()) != null) {
+                if (currentLineFood != null && !currentLineFood.isBlank()) {
+                    Food.food.add(convertStringToBase(currentLineFood));
+                    addInBase("Продукты питания", (ArrayList<Product>) Food.food);
+                }
+
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void getСategoryAndSet(String s, Product product) {
+        if (s != null && s.contains("Категория товара:")) {
+            product.setCategoryProduct(s.split(":")[1]);
+        }
+    }
+
+    private static void getTypeAndSet(String s, Product product) {
+        if (s != null && s.contains("Тип товара:")) {
+            product.setTypeProduct(s.split(":")[1]);
+        }
+    }
+
     private static void getNameAndSet(String s, Product product) {
-        if (s != null && s.contains("Товар:")) {
+        if (s != null && s.contains("Наименование товара:")) {
             product.setNameProduct(s.split(":")[1]);
         }
     }
@@ -126,11 +241,10 @@ public class ProductDataBase extends DataBase {
         }
     }
 
-    private static void getItemAndSet(String s, Product product) {
-        if (s != null && s.contains("Артикул:")) {
-            product.setItem(Integer.parseInt(s.split(":")[1]));
-        }
+    private static void getItemAndSet(Product product) {
+        int s = product.hashCode();
+        if (s >= 1)
+            product.setItem(s);
     }
 }
-
 

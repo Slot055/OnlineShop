@@ -10,23 +10,17 @@ public class Cracker extends Bakery {
         super(categoryProduct, typeProduct, nameProduct, price, item, expirationDate);
     }
 
+    public Cracker() {
+
+    }
+
     @Override
     public void productInfo() {
 
     }
 
     @Override
-    public Collection<Product> findAllProducts() {
-        return null;
-    }
-
-    @Override
     public Product findProduct(String name) {
-        return null;
-    }
-
-    @Override
-    public Set<Product> findProducts(int price) {
         return null;
     }
 

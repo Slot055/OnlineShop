@@ -1,5 +1,7 @@
 package ru.MyOnlineShop.model.client;
 
+import java.util.Objects;
+
 public class Client {
     private int idClient;
     private String name;
@@ -8,8 +10,6 @@ public class Client {
     private int age;
     private String phoneNumber;
     private String email;
-    private ClientAccount clientAccount;
-
 
     public Client(int idClient, String name, String lastName, String gender, int age, String phoneNumber, String email) {
         this.idClient = idClient;
@@ -28,9 +28,24 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Номер аккаунта:" + idClient + " , " + "Имя:" + name + " , " + "Фамилия:" + lastName + " , " + "Пол:" + gender + " , " + "Возраст:" + age +
+        return "Номер клиента:" + idClient + " , " + "Имя:" + name + " , " + "Фамилия:" + lastName + " , " + "Пол:" + gender + " , " + "Возраст:" + age +
                 " , " + "Номер_телефона:" + phoneNumber + " , " + "Email:" + email;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return getIdClient() == client.getIdClient() && getAge() == client.getAge() && getName().equals(client.getName()) &&
+                getLastName().equals(client.getLastName()) && getGender().equals(client.getGender()) &&
+                getPhoneNumber().equals(client.getPhoneNumber()) && getEmail().equals(client.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getLastName(), getGender(), getAge(), getPhoneNumber(), getEmail());
     }
 
     public int getIdClient() {
@@ -87,14 +102,6 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public ClientAccount getClientAccount() {
-        return clientAccount;
-    }
-
-    public void setClientAccount(ClientAccount clientAccount) {
-        this.clientAccount = clientAccount;
     }
 
 
