@@ -1,6 +1,5 @@
 package ru.MyOnlineShop.model.product;
-import ru.MyOnlineShop.model.service.buy.Buy;
-import java.util.Objects;
+import ru.MyOnlineShop.model.service.buyService.Buy;
 
 public class Product implements Buy, Comparable<Product> {
     private String categoryProduct;
@@ -20,25 +19,24 @@ public class Product implements Buy, Comparable<Product> {
     public Product() {
     }
 
+    public int generateItem(Product product) {
+        int id = product.hashCode() / 100000;
+        if (id < 0) {
+            int idFinal = Math.abs(-id);
+            setItem(idFinal);
+            return getItem();
+        } else setItem(id);
+
+        return getItem();
+
+    }
+
     @Override
     public String toString() {
         return "Категория товара:" + categoryProduct + " , " + "Тип товара:" + typeProduct + " , " + "Наименование товара:" + nameProduct +
                 " , " + "Цена:" + price + " , " + "Артикул:" + item;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-        Product product = (Product) o;
-        return Double.compare(product.getPrice(), getPrice()) == 0 && Objects.equals(getCategoryProduct(), product.getCategoryProduct()) &&
-                Objects.equals(getTypeProduct(), product.getTypeProduct()) && Objects.equals(getNameProduct(), product.getNameProduct());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getCategoryProduct(), getTypeProduct(), getNameProduct(), getPrice());
-    }
 
     public void productInfo() {
 

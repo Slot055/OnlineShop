@@ -1,7 +1,7 @@
 package ru.MyOnlineShop.model.product.food;
 
 import ru.MyOnlineShop.model.product.Product;
-import ru.MyOnlineShop.model.service.buy.Buy;
+import ru.MyOnlineShop.model.service.buyService.Buy;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,7 @@
 package ru.MyOnlineShop.model.dataBase;
-
 import ru.MyOnlineShop.model.CreateToObject;
 import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.client.Client;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,8 +11,7 @@ import java.util.*;
 
 public class ClientDataBase extends DataBase {
     private Client client;
-    private static List<Client> clientBase = new ArrayList<>();
-
+    private List<Client> clientBase = new ArrayList<>();
 
     public Client getClient() {
         return client;
@@ -24,12 +21,12 @@ public class ClientDataBase extends DataBase {
         this.client = client;
     }
 
-    public static List<Client> getClientBase() {
+    public List<Client> getClientBase() {
         return clientBase;
     }
 
-    public static void setClientBase(List<Client> clientBase) {
-        ClientDataBase.clientBase = clientBase;
+    public void setClientBase(List<Client> clientBase) {
+        this.clientBase = clientBase;
     }
 
     @Override
@@ -62,12 +59,12 @@ public class ClientDataBase extends DataBase {
 
             String currentLine = "";
             while ((currentLine = br.readLine()) != null) {
-                //System.out.println(currentLine);
+               // System.out.println(currentLine);
                 if (currentLine != null && !currentLine.isBlank())
                     clientBase.add(convertStringToBase(currentLine));
             }
 
-            // System.out.println(clientBase);
+           //  System.out.println(clientBase);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,6 +92,7 @@ public class ClientDataBase extends DataBase {
 
     @Override
     public void exportFromDataBase() {
+
         try (FileWriter fw = new FileWriter("dataBase/dataBaseCatalog/ClientBaseExport.txt")) {
             for (Client client : clientBase)
                 fw.write(client + "\n");
@@ -102,6 +100,7 @@ public class ClientDataBase extends DataBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
@@ -150,6 +149,7 @@ public class ClientDataBase extends DataBase {
             client.setEmail(s.split(":")[1]);
         }
     }
+
 }
 
 

@@ -1,5 +1,4 @@
 package ru.MyOnlineShop.model.dataBase;
-
 import ru.MyOnlineShop.model.exeption.InvalidCategoryProduct;
 import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.product.food.Food;
@@ -9,7 +8,6 @@ import ru.MyOnlineShop.model.product.homeTechnics.BigHomeTechnics;
 import ru.MyOnlineShop.model.product.homeTechnics.HomeElectronics;
 import ru.MyOnlineShop.model.product.homeTechnics.NonFood;
 import ru.MyOnlineShop.model.product.homeTechnics.SmallHomeTechnics;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -40,7 +38,7 @@ public class ProductDataBase extends DataBase {
         if (productBasePrice.containsKey(typeProduct)) {
             return productBasePrice.get(typeProduct);
         } else {
-            throw new InvalidCategoryProduct("Категории товаров пока нет в прайс-листе",typeProduct);
+            throw new InvalidCategoryProduct("Категории товаров пока нет в прайс-листе", typeProduct);
         }
 
     }
@@ -127,9 +125,9 @@ public class ProductDataBase extends DataBase {
                         dbHomeElectronics.write(product + "\n");
                         break;
                 }
-               if (product.getCategoryProduct().equals("Бытовая техника"))
+                if (product.getCategoryProduct().equals("Бытовая техника"))
                     dbNonFood.write(product + "\n");
-               if (product.getCategoryProduct().equals("Продукты питания"))
+                if (product.getCategoryProduct().equals("Продукты питания"))
                     dbFood.write(product + "\n");
             }
             dbExport.flush();
@@ -243,9 +241,8 @@ public class ProductDataBase extends DataBase {
     }
 
     private static void getItemAndSet(Product product) {
-        int s = product.hashCode();
-        if (s >= 1)
-            product.setItem(s);
+        product.setItem(product.generateItem(product));
     }
+
 }
 

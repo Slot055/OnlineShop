@@ -2,6 +2,7 @@ package ru.MyOnlineShop.model.client;
 
 import java.util.Objects;
 
+
 public class Client {
     private int idClient;
     private String name;
@@ -26,10 +27,15 @@ public class Client {
 
     }
 
-    @Override
-    public String toString() {
-        return "Номер клиента:" + idClient + " , " + "Имя:" + name + " , " + "Фамилия:" + lastName + " , " + "Пол:" + gender + " , " + "Возраст:" + age +
-                " , " + "Номер_телефона:" + phoneNumber + " , " + "Email:" + email;
+    public int generateIdClient(Client client) {
+        int id = client.hashCode() / 10000;
+        if (id < 0) {
+            int idFinal = Math.abs(-id);
+            setIdClient(idFinal);
+            return getIdClient();
+        } else setIdClient(id);
+
+        return getIdClient();
 
     }
 
@@ -45,7 +51,14 @@ public class Client {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getLastName(), getGender(), getAge(), getPhoneNumber(), getEmail());
+        return Objects.hash(getIdClient(), getName(), getLastName(), getGender(), getAge(), getPhoneNumber(), getEmail());
+    }
+
+    @Override
+    public String toString() {
+        return "Номер клиента:" + idClient + " , " + "Имя:" + name + " , " + "Фамилия:" + lastName + " , " + "Пол:" + gender + " , " + "Возраст:" + age +
+                " , " + "Номер_телефона:" + phoneNumber + " , " + "Email:" + email;
+
     }
 
     public int getIdClient() {

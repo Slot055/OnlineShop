@@ -1,6 +1,4 @@
-package ru.MyOnlineShop.model.service.buy;
-import ru.MyOnlineShop.model.product.Product;
-import java.util.Collection;
+package ru.MyOnlineShop.model.service.buyService;
 
 public interface Buy {
 

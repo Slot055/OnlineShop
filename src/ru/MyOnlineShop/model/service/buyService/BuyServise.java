@@ -1,4 +1,4 @@
-package ru.MyOnlineShop.model.service.buy;
+package ru.MyOnlineShop.model.service.buyService;
 
 import ru.MyOnlineShop.model.dataBase.ProductDataBase;
 import ru.MyOnlineShop.model.exeption.InvalidCategoryProduct;
@@ -8,9 +8,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public abstract class BuyServise implements Buy {
+public abstract class BuyServise implements Runnable {
 
     public static int attempts = 3;
+
+    @Override
+    public void run() {
+
+    }
 
     public static void productCategorySearch(Scanner scanner, ProductDataBase productDataBase) {
 

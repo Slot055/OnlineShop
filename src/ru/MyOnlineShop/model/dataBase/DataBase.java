@@ -1,10 +1,10 @@
 package ru.MyOnlineShop.model.dataBase;
 
-import ru.MyOnlineShop.model.service.buy.Buy;
+import ru.MyOnlineShop.model.service.buyService.Buy;
 
 import java.util.Scanner;
 
-public abstract class DataBase implements Buy {
+public abstract class DataBase implements Buy{
 
     abstract void dataBaseWrite(Scanner scanner);
 

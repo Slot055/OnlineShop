@@ -4,6 +4,7 @@ import ru.MyOnlineShop.model.client.Client;
 import ru.MyOnlineShop.model.dataBase.ClientDataBase;
 import ru.MyOnlineShop.model.dataBase.ProductDataBase;
 import ru.MyOnlineShop.model.service.Basket;
+import ru.MyOnlineShop.model.service.clientAccountServise.ClientServise;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -35,7 +36,7 @@ public class CreateToObject {
         client.setPhoneNumber(scanner.next());
         System.out.println("Email:");
         client.setEmail(scanner.next());
-        client.setIdClient(client.hashCode());
+        client.setIdClient(client.generateIdClient(client));
 
         return client;
     }
@@ -58,6 +59,11 @@ public class CreateToObject {
 
     public static Basket createBasket() {
         return new Basket("Корзина продуктов");
+    }
+
+    public static ClientServise createClientServise() {
+        ClientServise clientServise = new ClientServise();
+        return clientServise;
     }
 
 }
