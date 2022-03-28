@@ -4,10 +4,10 @@ import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.product.food.Food;
 import ru.MyOnlineShop.model.product.food.bakery.Bakery;
 import ru.MyOnlineShop.model.product.food.dairyProduct.DairyProduct;
-import ru.MyOnlineShop.model.product.homeTechnics.BigHomeTechnics;
-import ru.MyOnlineShop.model.product.homeTechnics.HomeElectronics;
-import ru.MyOnlineShop.model.product.homeTechnics.NonFood;
-import ru.MyOnlineShop.model.product.homeTechnics.SmallHomeTechnics;
+import ru.MyOnlineShop.model.product.nonFood.homeTechnics.BigHomeTechnics;
+import ru.MyOnlineShop.model.product.nonFood.homeTechnics.HomeElectronics;
+import ru.MyOnlineShop.model.product.nonFood.NonFood;
+import ru.MyOnlineShop.model.product.nonFood.homeTechnics.SmallHomeTechnics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -21,7 +21,7 @@ public class ProductDataBase extends DataBase {
 
     public Map<String, ArrayList<Product>> addInBase(String categoryProduct, ArrayList<Product> productBase) {
 
-        productBasePrice.put(categoryProduct, productBase);
+        productBasePrice.put(categoryProduct.toLowerCase(), productBase);
         return productBasePrice;
     }
 
@@ -43,10 +43,6 @@ public class ProductDataBase extends DataBase {
 
     }
 
-    @Override
-    public void putInBasket() {
-
-    }
 
     @Override
     public void dataBaseWrite(Scanner scanner) {

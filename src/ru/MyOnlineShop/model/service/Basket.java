@@ -9,13 +9,16 @@ public class Basket {
 
     private String name;
     private Product product;
+    private List<Product> productsInBasket;
 
-    public Basket(String name) {
+    public Basket(String name,ArrayList<Product> productsInBasket) {
         this.name = name;
+        this.productsInBasket = productsInBasket;
     }
 
-    private List<Product> basket = new ArrayList<>();
+    public Basket() {
 
+    }
 
     public String getName() {
         return name;
@@ -33,12 +36,11 @@ public class Basket {
         this.product = product;
     }
 
-    public List<Product> getBasket() {
-        return basket;
+    public List<Product> getProductsInBasket() {
+        return productsInBasket;
     }
 
-    public void setBasket(List<Product> basket) {
-        this.basket = basket;
+    public void setProductsInBasket(List<Product> productsInBasket) {
+        this.productsInBasket = productsInBasket;
     }
-
 }

@@ -83,15 +83,6 @@ public class Product implements Buy, Comparable<Product> {
     }
 
 
-    @Override
-    public Product findProduct(String name) {
-        return null;
-    }
-
-    @Override
-    public void putInBasket() {
-
-    }
 
     @Override
     public int compareTo(Product product) {

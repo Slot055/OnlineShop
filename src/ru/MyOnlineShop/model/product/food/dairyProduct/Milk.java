@@ -16,25 +16,6 @@ public class Milk extends DairyProduct {
     public Milk() {
     }
 
-    @Override
-    public void productInfo() {
-
-    }
-
-    @Override
-    public Product findProduct(String name) {
-        return null;
-    }
-
-    @Override
-    public void putInBasket() {
-
-    }
-
-    @Override
-    public void pay() {
-        super.pay();
-    }
 
     public double getVolume() {
         return volume;

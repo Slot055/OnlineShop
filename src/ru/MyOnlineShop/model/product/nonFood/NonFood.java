@@ -1,4 +1,4 @@
-package ru.MyOnlineShop.model.product.homeTechnics;
+package ru.MyOnlineShop.model.product.nonFood;
 
 import ru.MyOnlineShop.model.product.Product;
 

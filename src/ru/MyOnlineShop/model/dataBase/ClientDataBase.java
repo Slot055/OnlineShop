@@ -1,6 +1,5 @@
 package ru.MyOnlineShop.model.dataBase;
 import ru.MyOnlineShop.model.CreateToObject;
-import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.client.Client;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -29,15 +28,6 @@ public class ClientDataBase extends DataBase {
         this.clientBase = clientBase;
     }
 
-    @Override
-    public Product findProduct(String name) {
-        return null;
-    }
-
-    @Override
-    public void putInBasket() {
-
-    }
 
     @Override
     public void dataBaseWrite(Scanner scanner) {

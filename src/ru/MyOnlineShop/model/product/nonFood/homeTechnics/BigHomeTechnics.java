@@ -1,5 +1,7 @@
-package ru.MyOnlineShop.model.product.homeTechnics;
+package ru.MyOnlineShop.model.product.nonFood.homeTechnics;
 import ru.MyOnlineShop.model.product.Product;
+import ru.MyOnlineShop.model.product.nonFood.NonFood;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,4 +14,5 @@ public abstract class BigHomeTechnics extends NonFood {
 
     }
     public static List<Product> bigHomeTechnicsList = new ArrayList<>();
+
 }

@@ -3,9 +3,12 @@ package ru.MyOnlineShop.model;
 import ru.MyOnlineShop.model.client.Client;
 import ru.MyOnlineShop.model.dataBase.ClientDataBase;
 import ru.MyOnlineShop.model.dataBase.ProductDataBase;
+import ru.MyOnlineShop.model.product.Product;
 import ru.MyOnlineShop.model.service.Basket;
+import ru.MyOnlineShop.model.service.buyService.BuyServise;
 import ru.MyOnlineShop.model.service.clientAccountServise.ClientServise;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -58,12 +61,15 @@ public class CreateToObject {
     }
 
     public static Basket createBasket() {
-        return new Basket("Корзина продуктов");
+        return new Basket("Корзина продуктов", new ArrayList<Product>());
     }
 
     public static ClientServise createClientServise() {
         ClientServise clientServise = new ClientServise();
         return clientServise;
     }
-
+    public static BuyServise createBuyServise() {
+        BuyServise buyServise = new BuyServise();
+        return buyServise;
+    }
 }
