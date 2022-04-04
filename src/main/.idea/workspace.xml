@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="913b4c4a-0459-4123-802a-28a7b84a9c3b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OnlineShop.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/ProductDataBase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/ProductDataBase.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/ProductDataBaseExport.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/ProductDataBaseExport.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseBakery/dataBaseBakery.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseBakery/dataBaseBakery.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseDairyProduct/dataBaseDairyProduct.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseDairyProduct/dataBaseDairyProduct.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseFood.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseFood/dataBaseFood.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseBigHomeTechnics.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseBigHomeTechnics.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseHomeElectronics.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseHomeElectronics.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseNonFood.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseNonFood.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseSmallHomeTechnics.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../dataBase/dataBaseCatalog/dataBaseCategory/dataBaseNonFood/dataBaseSmallHomeTechnics.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/MyOnlineShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/MyOnlineShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/CreateToObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/CreateToObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/OnlineShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/OnlineShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/dataBase/ClientDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/dataBase/ClientDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/dataBase/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/dataBase/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/dataBase/ProductDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/dataBase/ProductDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/exeption/InvalidCategoryProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/exeption/InvalidCategoryProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/exeption/InvalidItemProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/exeption/InvalidItemProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/food/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/food/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/food/bakery/Bakery.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/food/bakery/Bakery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/food/bakery/Bread.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/food/bakery/Bread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/food/bakery/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/food/bakery/Cracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/food/dairyProduct/Cheese.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/food/dairyProduct/Cheese.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/food/dairyProduct/DairyProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/food/dairyProduct/DairyProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/food/dairyProduct/Milk.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/food/dairyProduct/Milk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/nonFood/NonFood.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/nonFood/NonFood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/nonFood/homeTechnics/BigHomeTechnics.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/nonFood/homeTechnics/BigHomeTechnics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/nonFood/homeTechnics/HomeElectronics.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/nonFood/homeTechnics/HomeElectronics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/product/nonFood/homeTechnics/SmallHomeTechnics.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/product/nonFood/homeTechnics/SmallHomeTechnics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/service/Basket.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/service/Basket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/service/buyService/Buy.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/service/buyService/Buy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/service/buyService/BuyServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/service/buyService/BuyServise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/service/buyService/Delivery.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/service/buyService/Delivery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ru/myOnlineShop/model/service/clientAccountServise/ClientServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/ru/myOnlineShop/model/service/clientAccountServise/ClientServise.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="27FtLLu1QgM5BlU9OCLMGie0kA5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="913b4c4a-0459-4123-802a-28a7b84a9c3b" name="Changes" comment="" />
+      <created>1648927604616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648927604616</updated>
+    </task>
+    <servers />
+  </component>
+</project>
