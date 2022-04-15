@@ -1,7 +1,10 @@
-package ru.myOnlineShop.model.service.buyService;
+package ru.myOnlineShop.model.service.clientBuyService;
 
+import ru.myOnlineShop.model.constanta.Day;
 import ru.myOnlineShop.model.dataBase.ProductDataBase;
 import ru.myOnlineShop.model.exeption.InvalidCategoryProduct;
+import ru.myOnlineShop.model.exeption.InvalidDay;
+import ru.myOnlineShop.model.exeption.InvalidPay;
 import ru.myOnlineShop.model.product.Product;
 import ru.myOnlineShop.model.service.Basket;
 
@@ -85,22 +88,91 @@ public class BuyServise implements Buy, Runnable {
                         System.out.println("Удалён из корзины" + "\n" + "******************");
                     }
                 }
-            }else if (i == 3) {
+            } else if (i == 3) {
                 System.out.println("Список товаров в корзине:" + "\n" + basket.getProductsInBasket() + "\n" + "***************************");
 
 
-            }else if (i == 0) {
+            } else if (i == 0) {
                 return basket;
-            }
-            else System.out.println("Выберете действие из списка" + "\n" + "*****************************");
+            } else System.out.println("Выберете действие из списка" + "\n" + "*****************************");
         }
 
     }
 
-    public Delivery getDelivery(Delivery delivery, Order order) {
+    @Override
+    public Check pay(Order order, Scanner scanner) {
+        return Buy.super.pay(order, scanner);
+    }
+
+    public Delivery getDelivery(Delivery delivery, Order order, Scanner scanner) {
+
+        System.out.println("""
+                ***********************
+                Выберите день доставки:
+                Понедельник - 1
+                Вторник - 2
+                Среда - 3
+                Четверг -4
+                Пятница - 5
+                -----------------------
+                Самовывоз - 0
+                """);
+        try {
+            if (order.getCheck() == null) {
+                throw new InvalidPay("Заказ не подтверждён");
+            }
+            int d = scanner.nextInt();
+            switch (d) {
+                case 0:
+                    delivery.setDay(null);
+                    break;
+                case 1:
+                    delivery.setDay(Day.MONDAY);
+                    break;
+                case 2:
+                    delivery.setDay(Day.TUESDAY);
+                    break;
+                case 3:
+                    delivery.setDay(Day.WEDNESDAY);
+                    break;
+                case 4:
+                    delivery.setDay(Day.THURSDAY);
+                    break;
+                case 5:
+                    delivery.setDay(Day.FRIDAY);
+                    break;
+                default:
+                    throw new InvalidDay("Необходимо обозначить день в рамках недели");
 
 
+            }
+            if (order.getCheck().isPay()) {
+                delivery.getListOrdersDelivery().add(order);
+                System.out.println("Статус заказа: Оплачен");
+                return delivery;
+            } else if (!order.getCheck().isPay()) {
+                delivery.getListOrdersDelivery().add(order);
+                System.out.println("Статус заказа: Не оплачен");
+                return delivery;
+            } else
+                return null;
+        } catch (InvalidPay | InvalidDay e) {
+            System.out.println(e.getMessage());
+            System.out.println("Осталось попыток ввода: " + attempts);
+
+            if (attempts != 0) {
+                if (e.getMessage().equals(e.getMessage())) {
+                    attempts--;
+                    getDelivery(delivery, order, scanner);
+                }
+            } else {
+                System.out.println("Попытки ввода закончились" + "\n" + "День доставки не выбран");
+                return delivery;
+            }
+
+        }
         return delivery;
+
     }
 }
 

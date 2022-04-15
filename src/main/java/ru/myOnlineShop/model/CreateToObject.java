@@ -1,16 +1,16 @@
 package ru.myOnlineShop.model;
 
+import org.joda.time.DateTime;
 import ru.myOnlineShop.model.client.Client;
 import ru.myOnlineShop.model.dataBase.ClientDataBase;
 import ru.myOnlineShop.model.dataBase.ProductDataBase;
 import ru.myOnlineShop.model.product.Product;
 import ru.myOnlineShop.model.service.Basket;
-import ru.myOnlineShop.model.service.buyService.BuyServise;
+import ru.myOnlineShop.model.service.clientBuyService.BuyServise;
+import ru.myOnlineShop.model.service.clientBuyService.Order;
 import ru.myOnlineShop.model.service.clientAccountServise.ClientServise;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class CreateToObject {
     public static OnlineShop createOnlineShop() {
@@ -68,8 +68,24 @@ public class CreateToObject {
         ClientServise clientServise = new ClientServise();
         return clientServise;
     }
+
     public static BuyServise createBuyServise() {
         BuyServise buyServise = new BuyServise();
         return buyServise;
     }
+
+    public static Order createOrder(Basket basket) {
+        Order order = new Order();
+        order.setNumberOrder(order.generateNumberOrder(order));
+        order.setDateTime(new DateTime().toDateTime());
+        order.setListProducts(new ArrayList<>(basket.getProductsInBasket()));
+        order.setSum(order.getListProducts().stream()
+                .map(Product::getPrice)
+                .reduce(Double::sum)
+                .orElse(0.00));
+        return order;
+    }
+
 }
+
+

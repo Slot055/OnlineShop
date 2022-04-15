@@ -1,5 +1,5 @@
 package ru.myOnlineShop.model.product;
-import ru.myOnlineShop.model.service.buyService.Buy;
+import ru.myOnlineShop.model.service.clientBuyService.Buy;
 
 public class Product implements Buy, Comparable<Product> {
     private String categoryProduct;

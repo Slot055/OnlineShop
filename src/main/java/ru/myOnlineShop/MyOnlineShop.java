@@ -1,11 +1,14 @@
 package ru.myOnlineShop;
-
+import org.joda.time.DateTime;
 import ru.myOnlineShop.model.CreateToObject;
+import ru.myOnlineShop.model.constanta.Day;
 import ru.myOnlineShop.model.dataBase.ProductDataBase;
 import ru.myOnlineShop.model.service.Basket;
-import ru.myOnlineShop.model.service.buyService.BuyServise;
+import ru.myOnlineShop.model.service.clientBuyService.BuyServise;
+import ru.myOnlineShop.model.service.clientBuyService.Delivery;
+import ru.myOnlineShop.model.service.clientBuyService.Order;
 import ru.myOnlineShop.model.service.clientAccountServise.ClientServise;
-
+import ru.myOnlineShop.model.service.logisticServise.WarehouseServise;
 import java.util.Scanner;
 
 
@@ -34,12 +37,25 @@ public class MyOnlineShop {
 
         //Получаем корзину продуктов
         Basket basket = CreateToObject.createBasket();
-        buyServise.getBasketProducts(basket,scanner,buyServise.productCategorySearch(scanner,productDataBase),productDataBase);
+        buyServise.getBasketProducts(basket, scanner, buyServise.productCategorySearch(scanner, productDataBase), productDataBase);
         System.out.println(basket.getProductsInBasket());
-        System.out.println(productDataBase.productBase.toString());
 
-        //Отправляем на доставку
+        //Получение заказа и оплата заказа(получение чека)
+        Order order = CreateToObject.createOrder(basket);
+        order.infoOrder(order);
+        buyServise.pay(order, scanner);
 
+        //Отправляем заказ на доставку
+        Delivery delivery = new Delivery();
+        buyServise.getDelivery(delivery,order,scanner);
+
+        WarehouseServise warehouseServise = new WarehouseServise();
+        warehouseServise.deliveryLogistics(delivery,order);
+
+
+        System.out.println("Количество заказов на доставку на " + delivery.getDay().getName() + " - " + warehouseServise.getDeliveryList().size() + " шт.");
+        System.out.println("Количество заказов на самовывоз на " + warehouseServise.getPickupList().size());
 
     }
+
 }

@@ -26,3 +26,14 @@ gretty {
     httpPort = 8080
     contextPath = '/MyWebApp'
 }
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+task my{
+    print("???")
+}

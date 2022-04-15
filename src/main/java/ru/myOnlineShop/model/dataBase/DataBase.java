@@ -1,6 +1,6 @@
 package ru.myOnlineShop.model.dataBase;
 
-import ru.myOnlineShop.model.service.buyService.Buy;
+import ru.myOnlineShop.model.service.clientBuyService.Buy;
 
 import java.util.Scanner;
 
